@@ -25,7 +25,7 @@ By selling LangChain-based applications as a service to businesses, you can prov
 
 - [Python 3.6 or higher](https://www.python.org/downloads/)
 - [LangChain library](https://python.langchain.com/en/latest/index.html)
-- [OpenAI API key](https://platform.openai.com/) o open source alternative (Cohere, HuggingFace, etc.)
+- [OpenAI API key](https://platform.openai.com/) or any alternative (Cohere, HuggingFace, etc.)
 - [SerpAPI API Key](https://serpapi.com/)
 
 ## OpenAI API Models
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 
 #### 4. Set up the keys in a .env file
 
-First, create a `.env` file in the root directory of the project. Inside the file, add your API keys (OpenAI, Cohere, Stable diffusion, etc.):
+First, create a `.env` file in the root directory of the project. Inside the file, add your API keys (OpenAI, Cohere, Stable diffusion, etc.).
 Save the file and close it. In your Python script or Jupyter notebook, load the `.env` file using the following code:
 ```python
 from dotenv import load_dotenv, find_dotenv
