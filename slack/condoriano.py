@@ -11,12 +11,12 @@ from functions import generate_text
 load_dotenv(find_dotenv())
 
 # Set Slack API credentials
-SLACK_BOT_TOKEN = os.environ["SLACK_BOT_TOKEN"]
-SLACK_SIGNING_SECRET = os.environ["SLACK_SIGNING_SECRET"]
-SLACK_BOT_USER_ID = os.environ["SLACK_BOT_USER_ID"]
+SLACK_BOT_TOKEN_2 = os.environ["SLACK_BOT_TOKEN_2"]
+SLACK_SIGNING_SECRET_2 = os.environ["SLACK_SIGNING_SECRET_2"]
+SLACK_BOT_USER_ID_2 = os.environ["SLACK_BOT_USER_ID_2"]
 
 # Initialize the Slack app
-app = App(token=SLACK_BOT_TOKEN)
+app = App(token=SLACK_BOT_TOKEN_2)
 
 # Initialize the Flask app
 # Flask is a web application framework written in Python
@@ -32,7 +32,7 @@ def get_bot_user_id():
     """
     try:
         # Initialize the Slack client with your bot token
-        slack_client = WebClient(token=os.environ["SLACK_BOT_TOKEN"])
+        slack_client = WebClient(token=os.environ["SLACK_BOT_TOKEN_2"])
         response = slack_client.auth_test()
         return response["user_id"]
     except SlackApiError as e:
@@ -51,11 +51,11 @@ def handle_mentions(body, say):
     """
     text = body["event"]["text"]
 
-    mention = f"<@{SLACK_BOT_USER_ID}>"
+    mention = f"<@{SLACK_BOT_USER_ID_2}>"
     text = text.replace(mention, "").strip()
 
-    # say("Sure, I'll get right on that!")
-    response = generate_text(text)
+    response = "Sorry, I'm busy right now"
+    # response = generate_text(text)
     say(response)
 
 
@@ -73,5 +73,4 @@ def slack_events():
 
 # Run the Flask app
 if __name__ == "__main__":
-    # print(get_bot_user_id())
-    flask_app.run()
+    flask_app.run(host="0.0.0.0", port=81)

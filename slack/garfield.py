@@ -39,21 +39,6 @@ def get_bot_user_id():
         print(f"Error: {e}")
 
 
-def my_function(text):
-    """
-    Custom function to process the text and return a response.
-    In this example, the function converts the input text to uppercase.
-
-    Args:
-        text (str): The input text to process.
-
-    Returns:
-        str: The processed text.
-    """
-    response = text.upper()
-    return response
-
-
 @app.event("app_mention")
 def handle_mentions(body, say):
     """
@@ -70,7 +55,6 @@ def handle_mentions(body, say):
     text = text.replace(mention, "").strip()
 
     # say("Sure, I'll get right on that!")
-    # response = my_function(text)
     response = generate_text(text)
     say(response)
 
@@ -89,4 +73,4 @@ def slack_events():
 
 # Run the Flask app
 if __name__ == "__main__":
-    flask_app.run()
+    flask_app.run(host="0.0.0.0", port=80)
